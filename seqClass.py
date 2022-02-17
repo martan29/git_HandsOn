@@ -1,3 +1,4 @@
+
 import sys, re
 from argparse import ArgumentParser
 
@@ -11,6 +12,10 @@ if len(sys.argv) == 1:
 
 args = parser.parse_args()
 args.seq = args.seq.upper()
+
+if 'U' in args.seq and 'T' in args.seq:
+    print ('The sequence is not DNA nor RNA')
+    sys.exit()
 
 if re.search('^[ACGTU]+$', args.seq):
     if re.search('T', args.seq):
